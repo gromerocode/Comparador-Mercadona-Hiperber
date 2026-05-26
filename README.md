@@ -71,6 +71,8 @@ La aplicación ayuda a los usuarios a optimizar su lista de la compra calculando
 
 ## 📦 Despliegue en Producción (Vercel)
 
+Ejemplo: https://comparador-mercadona-hiperber.vercel.app/
+
 El proyecto está preparado de forma nativa para ser desplegado en **Vercel** en un solo clic.
 
 1.  Vincula este proyecto a tu cuenta de GitHub.
