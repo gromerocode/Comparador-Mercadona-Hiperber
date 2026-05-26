@@ -2,6 +2,47 @@ const IS_DEV = import.meta.env.DEV;
 const BASE_URL = IS_DEV ? '/mercadona-api' : '/api/mercadona';
 
 /**
+ * Genera una descripción legible del formato del producto (ej: "Bote 52 g", "Pack 6 x 250 ml").
+ */
+function getFormatDescription(item) {
+  const packaging = item.packaging || '';
+  const priceInfo = item.price_instructions || {};
+  const unitSize = priceInfo.unit_size;
+  const sizeFormat = priceInfo.size_format;
+  const totalUnits = priceInfo.total_units;
+  
+  let sizeStr = '';
+  if (unitSize !== undefined && unitSize !== null) {
+    if (sizeFormat === 'kg') {
+      if (unitSize < 1) {
+        sizeStr = `${Math.round(unitSize * 1000)} g`;
+      } else {
+        sizeStr = `${unitSize} kg`;
+      }
+    } else if (sizeFormat === 'l') {
+      if (unitSize < 1) {
+        sizeStr = `${Math.round(unitSize * 1000)} ml`;
+      } else {
+        sizeStr = `${unitSize} l`;
+      }
+    } else {
+      sizeStr = `${unitSize} ${sizeFormat || ''}`.trim();
+    }
+  }
+  
+  let parts = [];
+  if (packaging) parts.push(packaging);
+  
+  if (totalUnits && totalUnits > 1) {
+    parts.push(`${totalUnits} x ${sizeStr}`);
+  } else if (sizeStr) {
+    parts.push(sizeStr);
+  }
+  
+  return parts.join(' ');
+}
+
+/**
  * Normaliza un producto devuelto por la API interna de Mercadona al formato estándar de la app.
  */
 function normalizeProduct(item) {
@@ -15,7 +56,8 @@ function normalizeProduct(item) {
     precio_kg: parseFloat(priceInfo.reference_price) || parseFloat(priceInfo.unit_price) || 0,
     formato_kg: priceInfo.reference_format || 'kg',
     imagen: item.thumbnail || 'https://via.placeholder.com/150?text=Mercadona',
-    supermercado: 'Mercadona'
+    supermercado: 'Mercadona',
+    formato: getFormatDescription(item)
   };
 }
 

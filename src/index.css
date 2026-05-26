@@ -621,6 +621,14 @@ p {
   word-break: break-word;
 }
 
+.card-format {
+  font-size: 0.85rem;
+  color: hsl(var(--text-secondary));
+  opacity: 0.8;
+  margin-top: 2px;
+  display: block;
+}
+
 /* Extra nutritional attributes */
 .card-attributes {
   display: flex;
@@ -1308,6 +1316,11 @@ p {
     -webkit-box-orient: vertical;
     overflow: hidden;
     white-space: normal;
+  }
+
+  .card-format {
+    font-size: 0.75rem;
+    margin-top: 1px;
   }
 
   .card-brand {

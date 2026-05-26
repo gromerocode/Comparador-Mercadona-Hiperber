@@ -12,7 +12,8 @@ export default function ProductCard({ product, isCheapest, onAddToCart, id }) {
     imagen,
     supermercado,
     nutriscore,
-    kcal
+    kcal,
+    formato
   } = product;
 
   return (
@@ -44,6 +45,9 @@ export default function ProductCard({ product, isCheapest, onAddToCart, id }) {
         <div className="card-top">
           <span className="card-brand">{brand || (supermercado === 'Mercadona' ? 'Hacendado' : 'Genérica')}</span>
           <h4 className="card-title" title={nombre}>{nombre}</h4>
+          {formato && (
+            <span className="card-format">{formato}</span>
+          )}
           
           <div className="card-attributes">
             {kcal !== undefined && kcal !== null && (

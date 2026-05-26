@@ -36,7 +36,8 @@ function normalizeProduct(item) {
     precio_kg: precioKg,
     formato_kg: formatoKg,
     imagen: image,
-    supermercado: 'Hiperber'
+    supermercado: 'Hiperber',
+    formato: item.productData?.format || ''
   };
 }
 
