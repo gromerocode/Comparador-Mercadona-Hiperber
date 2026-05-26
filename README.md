@@ -1,6 +1,6 @@
 # AhorraSuper 🛒 - Comparador de Precios (Mercadona vs Hiperber)
 
-**AhorraSuper** es una aplicación web moderna y reactiva diseñada para comparar precios de productos de alimentación en tiempo real entre dos de los principales supermercados españoles: **Mercadona** e **Hiperber**. 
+Aplicación web moderna y reactiva diseñada para comparar precios de productos de alimentación en tiempo real entre dos de los principales supermercados españoles: **Mercadona** e **Hiperber**. 
 
 La aplicación ayuda a los usuarios a optimizar su lista de la compra calculando automáticamente el supermercado más económico según su cesta actual, mostrando el porcentaje de ahorro real y presentando gráficos comparativos interactivos.
 
@@ -14,7 +14,7 @@ La aplicación ayuda a los usuarios a optimizar su lista de la compra calculando
     *   Suma de costes totales por supermercado de manera independiente.
     *   Indicador inteligente de ahorro (porcentaje de diferencia y cantidad exacta en euros).
     *   Gráfico comparativo nativo (SVG) adaptativo.
-*   **Diseño Premium e Interactivo:** Interfaz basada en *Glassmorphism*, paleta de colores armónica, transiciones fluidas y soporte completo para **Modo Claro** y **Modo Oscuro**.
+*   **Diseño Interactivo:** Interfaz basada en *Glassmorphism*, paleta de colores armónica, transiciones fluidas y soporte completo para **Modo Claro** y **Modo Oscuro**.
 *   **Optimización Móvil Completa:**
     *   Tarjetas de producto verticales y compactas.
     *   Botón "Añadir al carrito" ampliado (`40x40px`) para evitar toques accidentales.
@@ -37,9 +37,7 @@ La aplicación ayuda a los usuarios a optimizar su lista de la compra calculando
 
 ---
 
-## 🚀 Instalación y Desarrollo Local
-
-Sigue estos pasos para ejecutar el proyecto en tu máquina local:
+## Instalación y Desarrollo Local
 
 ### Requisitos Previos
 *   Tener instalado **Node.js** (versión 18 o superior recomendada).
