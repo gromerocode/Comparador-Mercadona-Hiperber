@@ -233,12 +233,8 @@ export default function App() {
       result = result.filter(p => getProductCategory(p.nombre) === filterCategory);
     }
 
-    // 2. Ordenación por relevancia
-    result.sort((a, b) => {
-      const scoreA = getRelevanceScore(a.nombre, query);
-      const scoreB = getRelevanceScore(b.nombre, query);
-      return scoreB - scoreA;
-    });
+    // 2. Ordenación por precio (de menor a mayor)
+    result.sort((a, b) => a.precio - b.precio);
 
     return result;
   };
