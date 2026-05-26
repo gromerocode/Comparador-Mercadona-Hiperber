@@ -719,6 +719,20 @@ p {
   box-shadow: 0 0 10px var(--accent-glow);
 }
 
+.add-cart-btn.in-cart {
+  background: hsl(var(--success));
+  border-color: hsl(var(--success));
+  color: #fff;
+}
+
+.add-cart-btn.in-cart:hover {
+  background: hsla(var(--success), 0.85);
+  border-color: hsla(var(--success), 0.85);
+  color: #fff;
+  transform: scale(1.1);
+  box-shadow: 0 0 10px hsla(var(--success), 0.4);
+}
+
 /* Empty states */
 .empty-state {
   text-align: center;

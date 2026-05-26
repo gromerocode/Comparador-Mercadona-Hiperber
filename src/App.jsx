@@ -366,6 +366,7 @@ export default function App() {
           hiperberProducts={processedHiperber} 
           isLoading={isLoading} 
           onAddToCart={handleAddToCart} 
+          cartItems={cartItems}
         />
       ) : (
         <div className="empty-state" style={{ padding: '60px 20px', background: 'var(--glass-bg)' }}>

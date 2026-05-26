@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import ProductCard from './ProductCard';
 import { AlertCircle, Plus } from 'lucide-react';
 
-export default function ProductGrid({ mercadonaProducts, hiperberProducts, isLoading, onAddToCart }) {
+export default function ProductGrid({ mercadonaProducts, hiperberProducts, isLoading, onAddToCart, cartItems = [] }) {
   // Estados para controlar el límite de productos visibles en cada lista
   const [visibleMercadona, setVisibleMercadona] = useState(5);
   const [visibleHiperber, setVisibleHiperber] = useState(5);
@@ -46,7 +46,9 @@ export default function ProductGrid({ mercadonaProducts, hiperberProducts, isLoa
     const cheapestProduct = allProducts.reduce((min, p) => p.precio < min.precio ? p : min, allProducts[0]);
     cheapestId = cheapestProduct ? cheapestProduct.id : null;
   }
-
+  const checkIsInCart = (product) => {
+    return cartItems.some(item => item.id === product.id);
+  };
   const renderSkeletons = () => (
     <>
       <div className="skeleton-card"></div>
@@ -87,6 +89,7 @@ export default function ProductGrid({ mercadonaProducts, hiperberProducts, isLoa
                 product={product}
                 isCheapest={product.id === cheapestId}
                 onAddToCart={onAddToCart}
+                isInCart={checkIsInCart(product)}
               />
             ))}
             
@@ -145,6 +148,7 @@ export default function ProductGrid({ mercadonaProducts, hiperberProducts, isLoa
                 product={product}
                 isCheapest={product.id === cheapestId}
                 onAddToCart={onAddToCart}
+                isInCart={checkIsInCart(product)}
               />
             ))}
             

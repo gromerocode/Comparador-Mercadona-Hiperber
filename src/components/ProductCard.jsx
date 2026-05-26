@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Plus, ShoppingBag } from 'lucide-react';
+import { Plus, ShoppingBag, Check } from 'lucide-react';
 
-export default function ProductCard({ product, isCheapest, onAddToCart, id }) {
+export default function ProductCard({ product, isCheapest, onAddToCart, id, isInCart }) {
   const [imageError, setImageError] = useState(false);
   const {
     nombre,
@@ -77,11 +77,11 @@ export default function ProductCard({ product, isCheapest, onAddToCart, id }) {
           </div>
           
           <button 
-            className="add-cart-btn"
+            className={`add-cart-btn ${isInCart ? 'in-cart' : ''}`}
             onClick={() => onAddToCart(product)}
-            title="Añadir a la lista de la compra"
+            title={isInCart ? "Añadido a la lista de la compra" : "Añadir a la lista de la compra"}
           >
-            <Plus size={18} />
+            {isInCart ? <Check size={18} /> : <Plus size={18} />}
           </button>
         </div>
       </div>
