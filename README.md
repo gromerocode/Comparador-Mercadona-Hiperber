@@ -6,7 +6,7 @@ La aplicación ayuda a los usuarios a optimizar su lista de la compra calculando
 
 ---
 
-## ✨ Características Principales
+## Características Principales
 
 *   **Búsqueda en Tiempo Real con Debounce (400ms):** Evita llamadas excesivas a las APIs mientras el usuario escribe y proporciona una experiencia de búsqueda fluida.
 *   **Comparación Paralela (2 Columnas):** Enfoque directo visual. En móviles y escritorio, los supermercados se muestran lado a lado en dos columnas con desplazamiento vertical independiente para una comparación óptima.
@@ -24,7 +24,7 @@ La aplicación ayuda a los usuarios a optimizar su lista de la compra calculando
 
 ---
 
-## 🛠️ Tecnologías Utilizadas
+## Tecnologías Utilizadas
 
 *   **Frontend:** React (JavaScript, JSX).
 *   **Compilador & Bundler:** Vite.
@@ -69,9 +69,8 @@ La aplicación ayuda a los usuarios a optimizar su lista de la compra calculando
 
 ---
 
-## 📦 Despliegue en Producción (Vercel)
+## Despliegue en Producción (Vercel)
 
-Ejemplo: https://comparador-mercadona-hiperber.vercel.app/
 
 El proyecto está preparado de forma nativa para ser desplegado en **Vercel** en un solo clic.
 
