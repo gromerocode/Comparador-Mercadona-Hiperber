@@ -1,0 +1,22 @@
+{
+  "short_name": "AhorraSuper",
+  "name": "AhorraSuper - Comparador de Supermercados",
+  "description": "Compara precios en tiempo real entre Mercadona e Hiperber.",
+  "start_url": "/",
+  "background_color": "#0a0c10",
+  "theme_color": "#8b5cf6",
+  "display": "standalone",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "https://via.placeholder.com/192/8b5cf6/ffffff?text=AS",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "https://via.placeholder.com/512/8b5cf6/ffffff?text=AhorraSuper",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "cleanUrls": true,
+  "rewrites": [
+    {
+      "source": "/api/mercadona/(.*)",
+      "destination": "/api/mercadona.js"
+    }
+  ]
+}
