@@ -8,6 +8,7 @@ export default function ProductCard({ product, isCheapest, onAddToCart, id, isIn
     brand,
     precio,
     precio_kg,
+    precio_original,
     formato_kg,
     imagen,
     supermercado,
@@ -68,7 +69,14 @@ export default function ProductCard({ product, isCheapest, onAddToCart, id, isIn
 
         <div className="card-bottom">
           <div className="price-box">
-            <span className="price-main">{precio.toFixed(2)} €</span>
+            <div className="price-row" style={{ display: 'flex', alignItems: 'baseline', gap: '6px', flexWrap: 'wrap' }}>
+              <span className="price-main">{precio.toFixed(2)} €</span>
+              {precio_original && precio_original > precio && (
+                <span className="price-original">
+                  {precio_original.toFixed(2)} €
+                </span>
+              )}
+            </div>
             {precio_kg > 0 && (
               <span className="price-kg">
                 {precio_kg.toFixed(2)} € / {formato_kg}

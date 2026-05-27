@@ -692,6 +692,14 @@ p {
   color: hsl(var(--text-primary));
 }
 
+.price-original {
+  text-decoration: line-through;
+  font-size: 0.9rem;
+  color: hsl(var(--text-muted));
+  font-weight: 500;
+  margin-left: 2px;
+}
+
 .price-kg {
   font-size: 0.75rem;
   color: hsl(var(--text-muted));

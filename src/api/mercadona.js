@@ -54,6 +54,7 @@ function normalizeProduct(item) {
     brand: item.brand || 'Hacendado',
     precio: parseFloat(priceInfo.unit_price) || 0,
     precio_kg: parseFloat(priceInfo.reference_price) || parseFloat(priceInfo.unit_price) || 0,
+    precio_original: parseFloat(priceInfo.previous_unit_price) || null,
     formato_kg: priceInfo.reference_format || 'kg',
     imagen: item.thumbnail || 'https://via.placeholder.com/150?text=Mercadona',
     supermercado: 'Mercadona',

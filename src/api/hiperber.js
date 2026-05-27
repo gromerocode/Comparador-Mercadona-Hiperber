@@ -4,11 +4,16 @@
 function normalizeProduct(item) {
   const priceData = item.priceData || {};
   const prices = priceData.prices || [];
-  const priceObj = prices.find(p => p.id === 'PRICE') || prices[0] || {};
+  
+  const offerPriceObj = prices.find(p => p.id === 'OFFER_PRICE');
+  const normalPriceObj = prices.find(p => p.id === 'PRICE') || prices[0] || {};
+  
+  const priceObj = offerPriceObj || normalPriceObj;
   const priceValue = priceObj.value || {};
   
   const precio = parseFloat(priceValue.centAmount) || 0;
   const precioKg = parseFloat(priceValue.centUnitAmount) || precio;
+  const precioOriginal = offerPriceObj ? parseFloat(normalPriceObj.value?.centAmount) : null;
   
   // Mapeamos el tipo de formato de unidad (e.g. "KG", "LT", "UD")
   let formatoKg = 'kg';
@@ -34,6 +39,7 @@ function normalizeProduct(item) {
     brand: brand,
     precio: precio,
     precio_kg: precioKg,
+    precio_original: precioOriginal,
     formato_kg: formatoKg,
     imagen: image,
     supermercado: 'Hiperber',
