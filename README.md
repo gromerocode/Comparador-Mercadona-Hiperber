@@ -6,6 +6,9 @@ La aplicación ayuda a los usuarios a optimizar su lista de la compra calculando
 
 ---
 
+<img width="2056" height="1230" alt="Captura de pantalla 2026-05-29 132407" src="https://github.com/user-attachments/assets/0be876b1-d879-4657-969f-8f9b7fa64efa" />
+
+
 ## Características Principales
 
 *   **Búsqueda en Tiempo Real con Debounce (400ms):** Evita llamadas excesivas a las APIs mientras el usuario escribe y proporciona una experiencia de búsqueda fluida.
