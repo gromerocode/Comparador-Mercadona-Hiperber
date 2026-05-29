@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import ProductCard from './ProductCard';
 import { AlertCircle, Plus } from 'lucide-react';
 
-export default function ProductGrid({ mercadonaProducts, hiperberProducts, isLoading, onAddToCart, cartItems = [] }) {
+export default function ProductGrid({ mercadonaProducts, hiperberProducts, isLoading, onAddToCart, cartItems = [], sortBy = 'price' }) {
   // Estados para controlar el límite de productos visibles en cada lista
   const [visibleMercadona, setVisibleMercadona] = useState(5);
   const [visibleHiperber, setVisibleHiperber] = useState(5);
@@ -43,7 +43,17 @@ export default function ProductGrid({ mercadonaProducts, hiperberProducts, isLoa
   let cheapestId = null;
   const allProducts = [...mercadonaProducts, ...hiperberProducts];
   if (allProducts.length > 0) {
-    const cheapestProduct = allProducts.reduce((min, p) => p.precio < min.precio ? p : min, allProducts[0]);
+    let cheapestProduct;
+    if (sortBy === 'price_reference') {
+      const validProducts = allProducts.filter(p => p.precio_kg > 0);
+      if (validProducts.length > 0) {
+        cheapestProduct = validProducts.reduce((min, p) => p.precio_kg < min.precio_kg ? p : min, validProducts[0]);
+      } else {
+        cheapestProduct = allProducts.reduce((min, p) => p.precio < min.precio ? p : min, allProducts[0]);
+      }
+    } else {
+      cheapestProduct = allProducts.reduce((min, p) => p.precio < min.precio ? p : min, allProducts[0]);
+    }
     cheapestId = cheapestProduct ? cheapestProduct.id : null;
   }
   const checkIsInCart = (product) => {

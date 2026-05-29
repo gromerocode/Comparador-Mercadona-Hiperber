@@ -116,6 +116,7 @@ export default function App() {
   const [mercadonaProducts, setMercadonaProducts] = useState([]);
   const [hiperberProducts, setHiperberProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [sortBy, setSortBy] = useState('price'); // 'price' o 'price_reference'
   
   // Historial de búsquedas removido a petición del usuario
 
@@ -224,7 +225,7 @@ export default function App() {
     setCartItems([]);
   };
 
-  // Procesamiento de datos: Filtro de Categoría y Ordenación por Relevancia en cliente
+  // Procesamiento de datos: Filtro de Categoría y Ordenación
   const processProducts = (productsList) => {
     let result = [...productsList];
 
@@ -233,8 +234,16 @@ export default function App() {
       result = result.filter(p => getProductCategory(p.nombre) === filterCategory);
     }
 
-    // 2. Ordenación por precio (de menor a mayor)
-    result.sort((a, b) => a.precio - b.precio);
+    // 2. Ordenación por precio unitario o por precio de referencia
+    if (sortBy === 'price_reference') {
+      result.sort((a, b) => {
+        const aVal = a.precio_kg > 0 ? a.precio_kg : 999999;
+        const bVal = b.precio_kg > 0 ? b.precio_kg : 999999;
+        return aVal - bVal;
+      });
+    } else {
+      result.sort((a, b) => a.precio - b.precio);
+    }
 
     return result;
   };
@@ -314,7 +323,7 @@ export default function App() {
               <X size={20} />
             </button>
           </div>
-          <div className="drawer-body">
+          <div className="drawer-body" style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
             <div className="filter-group">
               <span className="filter-group-label">Filtrar por Categoría</span>
               <div className="category-list">
@@ -337,6 +346,30 @@ export default function App() {
                     {cat.label}
                   </button>
                 ))}
+              </div>
+            </div>
+
+            <div className="filter-group">
+              <span className="filter-group-label">Ordenar por</span>
+              <div className="category-list">
+                <button
+                  className={`category-item-btn ${sortBy === 'price' ? 'active' : ''}`}
+                  onClick={() => {
+                    setSortBy('price');
+                    setIsFiltersOpen(false);
+                  }}
+                >
+                  Precio Unitario
+                </button>
+                <button
+                  className={`category-item-btn ${sortBy === 'price_reference' ? 'active' : ''}`}
+                  onClick={() => {
+                    setSortBy('price_reference');
+                    setIsFiltersOpen(false);
+                  }}
+                >
+                  Precio por Kg / Litro
+                </button>
               </div>
             </div>
           </div>
@@ -363,6 +396,7 @@ export default function App() {
           isLoading={isLoading} 
           onAddToCart={handleAddToCart} 
           cartItems={cartItems}
+          sortBy={sortBy}
         />
       ) : (
         <div className="empty-state" style={{ padding: '60px 20px', background: 'var(--glass-bg)' }}>
